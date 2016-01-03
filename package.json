@@ -1,0 +1,23 @@
+{
+  "name": "react_flux-todo_app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "mkdir -p dist && watchify src/app.js -t reactify -t babelify -o ./dist/app.min.js"
+  },
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "babelify": "^7.2.0",
+    "browserify": "^12.0.1",
+    "reactify": "^1.1.1",
+    "watchify": "^3.6.1"
+  },
+  "dependencies": {
+    "flux": "^2.1.1",
+    "react": "^0.14.5",
+    "react-dom": "^0.14.5"
+  }
+}
