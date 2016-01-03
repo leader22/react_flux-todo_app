@@ -1,10 +1,28 @@
 const React = require('react');
 
+const store = require('../store');
+const TodoList = require('./todo-list.jsx');
+
+function getTodoState() {
+  return {
+    allTodos: [1, 2, 4, 5]
+  };
+}
+
 const TodoApp = React.createClass({
-  render: function() {
+  getInitialState() {
+    return getTodoState();
+  },
+
+  render() {
     return (
-      <div className="commentBox">
-        Hello, world! I am a CommentBox.
+      <div>
+        <header>
+          <h1>
+            TodoApp
+          </h1>
+        </header>
+        <TodoList allTodos={this.state.allTodos} />
       </div>
     );
   }
