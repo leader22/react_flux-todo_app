@@ -1,6 +1,6 @@
 const React = require('react');
 
-const store = require('../store');
+const store = require('../stores/todo');
 const TodoInput = require('./todo-input.jsx');
 const TodoList  = require('./todo-list.jsx');
 

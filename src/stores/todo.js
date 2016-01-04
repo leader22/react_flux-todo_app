@@ -1,7 +1,7 @@
 'use strict';
-var AppDispatcher = require('./dispatcher');
+var AppDispatcher = require('../dispatcher');
 var EventEmitter = require('events').EventEmitter;
-var TodoConstants = require('./const');
+var TodoConstants = require('../const');
 
 var CHANGE_EVENT = TodoConstants.EVENT_TYPES.CHANGE;
 
