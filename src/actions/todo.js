@@ -8,8 +8,10 @@ var TodoActions = {
    */
   create(text) {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.ACTION_TYPES.TODO_CREATE,
-      text: text
+      type: TodoConstants.ACTION_TYPES.TODO_CREATE,
+      entity: {
+        text: text
+      }
     });
   },
 
@@ -18,8 +20,10 @@ var TodoActions = {
    */
   destroy(id) {
     AppDispatcher.dispatch({
-      actionType: TodoConstants.ACTION_TYPES.TODO_DESTROY,
-      id: id
+      type: TodoConstants.ACTION_TYPES.TODO_DESTROY,
+      entity: {
+        id: id
+      }
     });
   },
 

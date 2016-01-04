@@ -38,13 +38,12 @@ class TodoStore extends EventEmitter {
     this.removeListener(CHANGE_EVENT, callback);
   }
 
-  handleAction(payload) {
-    var action = payload;
-    var text;
+  handleAction(action) {
+    var entity = action.entity;
 
-    switch(action.actionType) {
+    switch(action.type) {
       case TodoConstants.ACTION_TYPES.TODO_CREATE:
-        text = action.text.trim();
+        var text = entity.text.trim();
         if (text !== '') {
           create(text);
           this.emitChange();
@@ -52,7 +51,7 @@ class TodoStore extends EventEmitter {
         break;
 
       case TodoConstants.ACTION_TYPES.TODO_DESTROY:
-        destroy(action.id);
+        destroy(entity.id);
         this.emitChange();
         break;
 

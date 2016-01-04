@@ -18,7 +18,10 @@ const TodoInput = React.createClass({
           value={this.state.value}
           autoFocus={true}
         />
-        <button onClick={this._onClick}>Add</button>
+        <button
+          onClick={this._onClick}
+          disabled={this.state.value.length === 0}
+        >Add</button>
       </div>
     );
   },
