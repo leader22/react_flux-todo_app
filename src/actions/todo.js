@@ -6,8 +6,8 @@ var TodoActions = {
   /**
    * @param  {string} text
    */
-  create: function(text) {
-    AppDispatcher.handleViewAction({
+  create(text) {
+    AppDispatcher.dispatch({
       actionType: TodoConstants.ACTION_TYPES.TODO_CREATE,
       text: text
     });
@@ -16,8 +16,8 @@ var TodoActions = {
   /**
    * @param  {string} id
    */
-  destroy: function(id) {
-    AppDispatcher.handleViewAction({
+  destroy(id) {
+    AppDispatcher.dispatch({
       actionType: TodoConstants.ACTION_TYPES.TODO_DESTROY,
       id: id
     });

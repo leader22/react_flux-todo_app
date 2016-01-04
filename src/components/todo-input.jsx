@@ -29,7 +29,8 @@ const TodoInput = React.createClass({
     });
   },
 
-  _onClick() {
+  _onClick(ev) {
+    ev.preventDefault();
     TodoActions.create(this.state.value);
     this.setState({
       value: ''

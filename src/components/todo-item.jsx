@@ -1,5 +1,7 @@
 const React = require('react');
 
+const TodoActions = require('../actions/todo');
+
 const TodoItem = React.createClass({
   propTypes: {
     todo: React.PropTypes.object.isRequired
@@ -13,16 +15,15 @@ const TodoItem = React.createClass({
           {todo.text}
         </label>
         <button
-          className="destroy"
           onClick={this._onDestroyClick}
-        />
+        >x</button>
       </li>
     );
   },
 
   _onDestroyClick(ev) {
     ev.preventDefault();
-    console.log('delete!');
+    TodoActions.destroy(this.props.todo.id);
   }
 });
 
