@@ -1,10 +1,9 @@
 var AppDispatcher = require('./dispatcher');
 var EventEmitter = require('events').EventEmitter;
-// var TodoConstants = require('../constants/TodoConstants');
-var TodoConstants = { TODO_CREATE: '1', TODO_DESTROY: '2' };
+var TodoConstants = require('./const');
 var assign = require('object-assign');
 
-var CHANGE_EVENT = 'change';
+var CHANGE_EVENT = TodoConstants.EVENT_TYPES.CHANGE;
 
 var _todos = {}; // collection of todo items
 
@@ -63,7 +62,7 @@ var TodoStore = assign({}, EventEmitter.prototype, {
     var text;
 
     switch(action.actionType) {
-      case TodoConstants.TODO_CREATE:
+      case TodoConstants.ACTION_TYPES.TODO_CREATE:
         text = action.text.trim();
         if (text !== '') {
           create(text);
@@ -71,7 +70,7 @@ var TodoStore = assign({}, EventEmitter.prototype, {
         }
         break;
 
-      case TodoConstants.TODO_DESTROY:
+      case TodoConstants.ACTION_TYPES.TODO_DESTROY:
         destroy(action.id);
         TodoStore.emitChange();
         break;

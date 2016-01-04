@@ -1,16 +1,26 @@
 const React = require('react');
 
+const TodoItem = require('./todo-item.jsx');
+
 const TodoList = React.createClass({
   render() {
-    var todos = this.props.allTodos;
+    var todos = [];
+    var allTodos = this.props.allTodos;
+
+    for (var key in allTodos) {
+      todos.push(<TodoItem key={key} todo={allTodos[key]} />);
+    }
 
     return (
       <ul>
-        { todos.map((todo, idx) => {
-          return (
-            <li key={idx}>{todo}</li>
-          );
-        }) }
+        { todos.length === 0 ?
+          <li>
+            <label>
+              No item
+            </label>
+          </li> :
+          todos
+        }
       </ul>
     );
   }
