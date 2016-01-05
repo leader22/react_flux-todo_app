@@ -1,26 +1,23 @@
 const React = require('react');
 
-const store = require('../stores/todo');
+const todoStore = require('../stores/todo');
+const userStore = require('../stores/user');
 const TodoInput = require('./todo-input.jsx');
 const TodoList  = require('./todo-list.jsx');
 
-function getTodoState() {
-  return {
-    allTodos: store.getAll()
-  };
-}
-
 const TodoApp = React.createClass({
   getInitialState() {
-    return getTodoState();
+    return getState();
   },
 
   componentDidMount() {
-    store.addChangeListener(this._onChange);
+    userStore.addChangeListener(this._onChange);
+    todoStore.addChangeListener(this._onChange);
   },
 
   componentWillUnmount() {
-    store.removeChangeListener(this._onChange);
+    userStore.removeChangeListener(this._onChange);
+    todoStore.removeChangeListener(this._onChange);
   },
 
   render() {
@@ -32,13 +29,24 @@ const TodoApp = React.createClass({
         <TodoInput />
         <hr />
         <TodoList allTodos={this.state.allTodos} />
+        <hr />
+        <div>
+          Last updated: <span>{this.state.user.updatedAt}</span>
+        </div>
       </div>
     );
   },
 
   _onChange() {
-    this.setState(getTodoState());
+    this.setState(getState());
   }
 });
 
 module.exports = TodoApp;
+
+function getState() {
+  return {
+    user:     userStore.getUser(),
+    allTodos: todoStore.getAll()
+  };
+}

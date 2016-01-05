@@ -10,7 +10,8 @@ var TodoActions = {
     AppDispatcher.dispatch({
       type: TodoConstants.ACTION_TYPES.TODO_CREATE,
       entity: {
-        text: text
+        text: text,
+        updatedAt: getNow()
       }
     });
   },
@@ -22,7 +23,8 @@ var TodoActions = {
     AppDispatcher.dispatch({
       type: TodoConstants.ACTION_TYPES.TODO_DESTROY,
       entity: {
-        id: id
+        id: id,
+        updatedAt: getNow()
       }
     });
   },
@@ -30,3 +32,8 @@ var TodoActions = {
 };
 
 module.exports = TodoActions;
+
+function getNow() {
+  var now = new Date();
+  return now.toJSON();
+}
